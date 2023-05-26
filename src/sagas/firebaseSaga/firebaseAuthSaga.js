@@ -7,8 +7,8 @@ import * as firebaseQuizMethods from '../../firebase/quizMethods';
 import firebaseCollectionTypes from '../../firebase/constants';
 
 export default function* firebaseAuthSagaWatcher() {
-    yield takeEvery(actionTypes.SIGN_IN_WITH_GOOGLE, singIn);
     yield takeEvery(actionTypes.SIGN_OUT, singOut);
+    yield takeEvery(actionTypes.SIGN_IN_WITH_GOOGLE, singIn);
 }
 
 export function* singIn() {

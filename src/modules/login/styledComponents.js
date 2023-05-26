@@ -1,11 +1,12 @@
 import styled from 'styled-components';
+import colors from '../../manager/themeManager/colors';
 
 export const LoginWrapper = styled.div`
     height: 90vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #2c2d32;
+    background: ${colors.mainBgColor};
 `;
 
 export const ButtonContainer = styled.div`
@@ -16,5 +17,5 @@ export const ButtonContainer = styled.div`
     align-items: center;
     padding: 0 40px;
     border-radius: 8px;
-    background-color: #232327;
+    background-color: ${colors.darkMainBgColor};
 `;

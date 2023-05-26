@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import colors from '../../../../../../manager/themeManager/colors';
 
 export const ReadyForGameWrapper = styled.div`
   display: flex;
@@ -8,7 +9,7 @@ export const ReadyForGameWrapper = styled.div`
 
 export const ReadyText = styled.span`
   font-size: 30px;
-  color: white;
+  color: ${colors.lightTextColor};
   padding: 0 0 20px;
   user-select: none;
 `;

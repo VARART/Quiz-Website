@@ -1,8 +1,9 @@
 import styled from 'styled-components';
+import colors from '../../../manager/themeManager/colors';
 
 export const ButtonText = styled.span`
     font-size: ${props => (props.fontSize)};
-    color: ${props => (props.isInversionTextColor ? 'white' : '#56bab7')};
+    color: ${props => (props.isInversionTextColor ? `${colors.lightTextColor}` : `${colors.brandTextColor}`)};
 `;
 
 export const CustomButtonWrapper = styled.div`
@@ -14,10 +15,10 @@ export const CustomButtonWrapper = styled.div`
     background: ${props => (props.backgroundColor ? props.backgroundColor : 'transparent')};
     
     &:active {
-        background: ${props => (props.activeBackgroundColor ? props.activeBackgroundColor : '#56bab7')};
+        background: ${props => (props.activeBackgroundColor ? props.activeBackgroundColor : `${colors.brandBgColor}`)};
       
        ${ButtonText} {
-          color: white;
+          color: ${colors.lightTextColor};
        }
     }
        

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import colors from '../../manager/themeManager/colors';
 
 export const QuizWrapper = styled.div`
     width: 100%;
@@ -6,5 +7,5 @@ export const QuizWrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #2c2d32;
+    background: ${colors.mainBgColor};
 `;

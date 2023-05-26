@@ -1,11 +1,11 @@
 import actionTypes from '../../constants/actionTypes';
 
 export const clearQuestionsStore = payload => ({ type: actionTypes.CLEAR_QUESTIONS_STORE, payload });
-export const clearUserResultsStore = payload => ({ type: actionTypes.CLEAR_USER_RESULTS_STORE, payload });
 export const clearAnswersListStore = payload => ({ type: actionTypes.CLEAR_ANSWERS_LIST_STORE, payload });
 export const setDataToLocalStorage = payload => ({ type: actionTypes.SET_DATA_TO_LOCAL_STORAGE, payload });
 export const setIsShowResultsStore = payload => ({ type: actionTypes.SET_IS_SHOW_RESULTS_STORE, payload });
 export const setQuestionsListStore = payload => ({ type: actionTypes.SET_QUESTIONS_LIST_STORE, payload });
+export const clearUsersResultsStore = payload => ({ type: actionTypes.CLEAR_USERS_RESULTS_STORE, payload });
 export const setQuestionsDocIdStore = payload => ({ type: actionTypes.SET_QUESTIONS_DOC_ID_STORE, payload });
 export const setCurrentQuestionStore = payload => ({ type: actionTypes.SET_CURRENT_QUESTION_STORE, payload });
 export const clearCurrentQuestionStore = payload => ({ type: actionTypes.CLEAR_CURRENT_QUESTION_STORE, payload });

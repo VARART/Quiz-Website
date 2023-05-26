@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import colors from '../../../../../../manager/themeManager/colors';
 
 export const ResultsWrapper = styled.div`
   width: 100%;
@@ -6,7 +7,7 @@ export const ResultsWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #2c2d32;
+  background: ${colors.mainBgColor};
   position: relative;
 `;
 
@@ -30,12 +31,12 @@ export const ScoresHeader = styled.div`
 `;
 
 export const User = styled.span`
-  color: white;
+  color: ${colors.lightTextColor};
   font-size: 14px;
 `;
 
 export const Scores = styled.span`
-  color: white;
+  color: ${colors.lightTextColor};
   font-size: 14px;
 `;
 

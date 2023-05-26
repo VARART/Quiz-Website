@@ -5,6 +5,7 @@ import {
     ReadyForGameWrapper,
 } from './styledComponents';
 import CustomButton from '../../../../../customComponents/customButton/CustomButton';
+import colors from '../../../../../../manager/themeManager/colors';
 
 const ReadyForGame = ({
     callback,
@@ -24,7 +25,7 @@ const ReadyForGame = ({
                     text={isUserReadyToStartQuiz ? 'CANCEL' : 'START'}
                     callback={callback}
                     isInversionTextColor={isUserReadyToStartQuiz}
-                    backgroundColor={isUserReadyToStartQuiz && '#56bab7'}
+                    backgroundColor={isUserReadyToStartQuiz && `${colors.brandBgColor}`}
                 />
             </ButtonWrapper>
         </ReadyForGameWrapper>

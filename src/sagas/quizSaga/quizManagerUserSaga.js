@@ -25,7 +25,7 @@ export function* setIsShowResults({ payload }) {
         type: firebaseCollectionTypes.USERS_RESULTS,
         docId: correctAnswersCountDocId,
     }));
-    yield put(actions.clearUserResultsStore());
+    yield put(actions.clearUsersResultsStore());
     yield put(actions.setCorrectAnswerDocIdStore(''));
     yield put(actions.clearCorrectAnswerCountStore());
     yield put(actions.clearAnswersListStore());
@@ -74,7 +74,7 @@ export function* setIsReadyForGameRequest() {
     const isUserReadyForGame = yield select(selectors.getIsReadyForGame);
 
     yield put(actions.getItemFromLocalStorageToStore('correctAnswersCountDocId'));
-    yield put(actions.clearUserResultsStore());
+    yield put(actions.clearUsersResultsStore());
 
     const correctAnswersCountDocId = yield select(selectors.getCorrectAnswersCountDocId);
 
@@ -148,7 +148,7 @@ export function* startQuiz({ payload: questionsList }) {
     for(let question of questions) {
         yield put(actions.setCurrentQuestionStore(question));
 
-        yield delay(500);
+        yield delay(10000);
     }
 
     yield call(finishQuizAndSetResults);

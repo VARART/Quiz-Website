@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import colors from '../../../manager/themeManager/colors';
 
 export const TextFieldContainer = styled.div`
     height: 15%;
@@ -21,9 +22,9 @@ export const TextField = styled.textarea`
   overflow-y: auto;
   border: none;
   border-radius: 8px;
-  background: #696969a8;
+  background: ${colors.textFieldBgColor};
   padding: 15px;
-  color: antiquewhite;
+  color: ${colors.textFieldTextColor};
   cursor: default;
   ::-webkit-scrollbar {
     display: none;
@@ -39,13 +40,13 @@ export const TextFieldButton = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #56bab7;
+  color: ${colors.brandTextColor};
   min-width: 21%;
   background: transparent;
   width: 50px;
   height: 37px;
   border-radius: 8px;
-  border: 1px solid #56bab7;
+  border: 1px solid ${colors.brandTextColor};
   user-select: none;
   cursor: pointer;
 `;

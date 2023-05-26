@@ -7,10 +7,10 @@ export default function* rootLocalStorageSaga() {
     yield all([
         call(getUserDataFromLocalStorage),
         takeEvery(actionTypes.SET_DATA_TO_LOCAL_STORAGE, setDataToLocalStorage),
-        takeEvery(actionTypes.GET_QUIZ_DATA_FROM_LOCAL_STORAGE, getQuizDataFromLocalStorage),
-        takeEvery(actionTypes.GET_ITEM_FROM_LOCAL_STORAGE_TO_STORE, getItemFromLocalStorageToStore),
         takeEvery(actionTypes.REMOVE_DATA_FROM_LOCAL_STORAGE, removeDataFromLocalStorage),
         takeEvery(actionTypes.REMOVE_ITEM_FROM_LOCAL_STORAGE, removeItemFromLocalStorage),
+        takeEvery(actionTypes.GET_QUIZ_DATA_FROM_LOCAL_STORAGE, getQuizDataFromLocalStorage),
+        takeEvery(actionTypes.GET_ITEM_FROM_LOCAL_STORAGE_TO_STORE, getItemFromLocalStorageToStore),
     ]);
 };
 

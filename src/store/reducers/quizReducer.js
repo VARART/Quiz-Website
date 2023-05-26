@@ -30,7 +30,7 @@ export default function quizReducer(state = initialState, { type, payload }) {
                 ...state,
                 questionsList: [ ...payload ],
             };
-        case actionTypes.CLEAR_USER_RESULTS_STORE:
+        case actionTypes.CLEAR_USERS_RESULTS_STORE:
             return {
                 ...state,
                 usersResultsList: [],

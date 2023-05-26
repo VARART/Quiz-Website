@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import colors from '../../../../../../manager/themeManager/colors';
 
 export const UserMessageWrapper = styled.div`
     display: flex;
@@ -29,17 +30,17 @@ export const MessageName = styled.div`
 `;
 
 export const Name = styled.span`
-    color: #56bab7;
+    color: ${colors.brandTextColor};
 `;
 
 export const MessageContainer = styled.div`
     width: 100%;
     height: 100%;
     padding: 17px 6px;
-    color: white;
+    color: ${colors.lightTextColor};
     border-radius: 0 0 8px 8px;
-    background: linear-gradient(4deg, #00000057, transparent);
-    box-shadow: rgba(0, 0, 0, 0.75) 0px 5px 15px;
+    background: ${colors.messageGradientColor};
+    box-shadow: ${colors.messageBoxShadowColor};
 `;
 
 export const Message = styled.span`

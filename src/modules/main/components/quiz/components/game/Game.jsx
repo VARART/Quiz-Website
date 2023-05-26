@@ -11,6 +11,7 @@ import CustomImage from '../../../../../customComponents/customImage/CustomImage
 import CustomButton from '../../../../../customComponents/customButton/CustomButton';
 import correctAnswerImage from '../../../../../../assets/images/correct-answer-image.svg.png';
 import notCorrectAnswerImage from '../../../../../../assets/images/not-correct-answer-image.png';
+import colors from '../../../../../../manager/themeManager/colors';
 
 const Game = ({
                   text,
@@ -72,7 +73,7 @@ const Game = ({
                             text={answer}
                             isDisabled={isDisabled}
                             callback={() => handleClick(answer)}
-                            activeBackgroundColor={answer !== correctAnswer && 'red'}
+                            activeBackgroundColor={answer !== correctAnswer && `${colors.wrongAnswerBgColor}`}
                         />
                     )}
                 </AnswerButtons>

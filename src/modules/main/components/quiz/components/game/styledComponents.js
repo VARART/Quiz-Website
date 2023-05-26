@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import colors from '../../../../../../manager/themeManager/colors';
 
 export const GameWrapper = styled.div`
   width: 100%;
@@ -6,17 +7,17 @@ export const GameWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #2c2d32;
+  background: ${colors.mainBgColor};
   position: relative;
 `;
 
 export const GameWindow = styled.div`
   display: flex;
   flex-direction: column;
-  border: 1px solid #56bab7;
+  border: 1px solid ${colors.brandBgColor};
   border-radius: 8px;
-  box-shadow: rgb(17, 29, 56) 0 3px 6px, rgba(0, 0, 0, 0.69) 0 3px 6px;
-  background: #232327;
+  box-shadow: ${colors.gameWindowBoxShadowColor};
+  background: ${colors.darkMainBgColor};
   width: 35%;
   min-width: 350px;
   height: 65vh;
@@ -40,7 +41,7 @@ export const AnswerResultImages = styled.div`
 `;
 
 export const QuestionText = styled.span`
-  color: white;
+  color: ${colors.lightTextColor};;
   user-select: none;
 `;
 

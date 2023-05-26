@@ -5,6 +5,7 @@ import {
 } from './styledComponents';
 import CustomButton from '../customComponents/customButton/CustomButton';
 import googleImage from '../../assets/images/google.svg';
+import colors from '../../manager/themeManager/colors';
 
 const Login = ({
    signInWithGoogle,
@@ -16,7 +17,7 @@ const Login = ({
                     text={'Login with Google'}
                     image={googleImage}
                     callback={signInWithGoogle}
-                    borderColor={'yellow'}
+                    borderColor={colors.loginButtonBorderColor}
                     isInversionTextColor
                 >
                 </CustomButton>
