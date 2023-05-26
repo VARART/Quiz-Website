@@ -4,6 +4,7 @@ import * as actions from '../../actions';
 import * as selectors from '../../selectors';
 
 const mapStateToProps = state => ({
+    isShowResults:  selectors.getIsShowResults(state),
     isQuizInProcess:  selectors.isQuizInProcess(state),
     isUserReadyToStartQuiz:  selectors.getIsUserReadyToStartQuiz(state),
 });

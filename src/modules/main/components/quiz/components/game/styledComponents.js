@@ -32,6 +32,13 @@ export const QuestionWrapper = styled.div`
   font-size: 1vw;
 `;
 
+export const AnswerResultImages = styled.div`
+  display: flex;
+  position: absolute;
+  padding-top: 20px;
+  top: 0;
+`;
+
 export const QuestionText = styled.span`
   color: white;
   user-select: none;

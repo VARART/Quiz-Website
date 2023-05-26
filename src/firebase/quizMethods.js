@@ -36,6 +36,33 @@ export const sendAddUserReadinessRequest = async () => {
     return { uid: user.uid, userReadinessDocId };
 };
 
+export const sendAddUserResultsRequest = async correctAnswersCount => {
+    const user = fb.auth.currentUser;
+    const {
+        uid,
+        photoURL,
+        displayName,
+    } = user;
+
+    let correctAnswersCountDocId = '';
+
+    const fireBaseRef = fb.firestore.collection(firebaseCollectionTypes.USERS_RESULTS);
+    const query = await fireBaseRef
+        .where('uid', '==', uid)
+        .get();
+    if (query.docs.length === 0) {
+        await fb.firestore.collection(firebaseCollectionTypes.USERS_RESULTS).add({
+            uid,
+            displayName,
+            photoURL,
+            correctAnswersCount,
+        })
+            .then(docRef => correctAnswersCountDocId = docRef.id);
+    }
+
+    return correctAnswersCountDocId;
+};
+
 export const deleteFromCollectionByDocIdRequest = async ({ type, docId }) => {
     const fireBaseUserRef = fb.firestore.collection(type);
 

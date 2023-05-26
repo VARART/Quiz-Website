@@ -3,12 +3,17 @@ import { createSelector } from 'reselect';
 export const getUserId = state => state.userState.userId;
 export const getMessages = state => state.chatState.messages;
 export const getQuestionsList = state => state.quizState.questionsList;
+export const getIsShowResults = state => state.quizState.isShowResults;
 export const getCurrentQuestion = state => state.quizState.currentQuestion;
+export const getAnswerResultList = state => state.quizState.answersList;
+export const getUsersResultsList = state => state.quizState.usersResultsList;
+export const getCurrentUserReadiness = state => state.quizState.currentUserReadiness;
 export const getIsUserReadyToStartQuiz = state => state.quizState.isUserReadyToStartQuiz;
 
 export const isQuizInProcess = createSelector(
     getQuestionsList,
-    questionsList => !!questionsList.length
+    getIsShowResults,
+    (questionsList, isShowResults) => (questionsList.length || isShowResults)
 );
 
 export const textSelector = createSelector(

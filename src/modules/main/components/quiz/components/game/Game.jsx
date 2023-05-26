@@ -5,14 +5,21 @@ import {
     QuestionText,
     AnswerButtons,
     QuestionWrapper,
+    AnswerResultImages,
 } from './styledComponents';
+import CustomImage from '../../../../../customComponents/customImage/CustomImage';
 import CustomButton from '../../../../../customComponents/customButton/CustomButton';
+import correctAnswerImage from '../../../../../../assets/images/correct-answer-image.svg.png';
+import notCorrectAnswerImage from '../../../../../../assets/images/not-correct-answer-image.png';
 
 const Game = ({
-    text,
-    answers,
-    correctAnswer,
-}) => {
+                  text,
+                  answers,
+                  correctAnswer,
+                  answerResultList,
+                  setAnswersListStore,
+                  setCorrectAnswersCountStore,
+              }) => {
     const [isDisabled, setIsDisabled] = useState(false);
 
     useEffect(() => {
@@ -20,11 +27,38 @@ const Game = ({
     }, [text, answers, correctAnswer]);
 
     const handleClick = answer => {
-        console.log('answer', answer)
+        const isCorrectAnswer = answer === correctAnswer;
+
+        setIsDisabled(true);
+        setAnswersListStore(isCorrectAnswer);
+        isCorrectAnswer && setCorrectAnswersCountStore();
     };
 
     return (
         <GameWrapper>
+            {answerResultList.length ?
+                <AnswerResultImages>
+                    {answerResultList.map((item, i) => {
+                        return item
+                            ? <CustomImage
+                                key={i}
+                                image={correctAnswerImage}
+                                width={'31px'}
+                                height={'31px'}
+                                padding={'5px'}
+                            />
+                            : <CustomImage
+                                key={i}
+                                image={notCorrectAnswerImage}
+                                width={'31px'}
+                                height={'31px'}
+                                padding={'5px'}
+                            />
+                    })}
+                </AnswerResultImages>
+                :
+                null
+            }
             <GameWindow>
                 <QuestionWrapper>
                     <QuestionText

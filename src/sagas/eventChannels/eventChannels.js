@@ -25,9 +25,21 @@ export function chatMessagesEventChannel() {
                     }
                 });
 
+            fb.firebase.firestore().collection(constants.USERS_RESULTS)
+                .onSnapshot({ includeMetadataChanges: true }, snapshot => {
+
+                    const usersResults = snapshot.docChanges().map(question => question.doc.data());
+                    const changes = snapshot.docChanges().map(change => change.type);
+
+                    if (changes[0] === 'added') {
+                        emmiter(actions.setUserResults(usersResults));
+                    }
+                });
+
             const listeners = [
                 fb.firebase.database().ref(constants.MESSAGES),
                 fb.firebase.database().ref(constants.QUESTIONS),
+                fb.firebase.database().ref(constants.USERS_RESULTS),
             ];
 
             return () => listeners.forEach(listener => listener.off(listener));

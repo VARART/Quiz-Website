@@ -3,6 +3,8 @@ import actionTypes from '../../constants/actionTypes';
 import * as firebaseAuthMethods from '../../firebase/authorizationMethods';
 import * as selectors from './selectors';
 import * as actions from './actions';
+import * as firebaseQuizMethods from '../../firebase/quizMethods';
+import firebaseCollectionTypes from '../../firebase/constants';
 
 export default function* firebaseAuthSagaWatcher() {
     yield takeEvery(actionTypes.SIGN_IN_WITH_GOOGLE, singIn);
@@ -29,6 +31,12 @@ export function* singIn() {
 
 export function* singOut() {
     const docId = yield select(selectors.getDocId);
+    const userReadinessDocId = yield select(selectors.getUserReadinessDocId);
+
+    userReadinessDocId && (yield call(firebaseQuizMethods.deleteFromCollectionByDocIdRequest, {
+        type: firebaseCollectionTypes.USERS_READINESS,
+        docId: userReadinessDocId,
+    }));
 
     try {
         yield call(firebaseAuthMethods.firebaseSignOut, docId);
