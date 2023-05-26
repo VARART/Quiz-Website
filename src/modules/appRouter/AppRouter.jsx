@@ -3,9 +3,9 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import * as routes from '../../routes';
 import * as constants from '../../constants/constants';
 
-const AppRouter = () => {
-    const user = true;
-
+const AppRouter = ({
+    user,
+}) => {
     return (
         user ?
             <Switch>

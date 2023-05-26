@@ -5,13 +5,14 @@ import {
     ButtonContainer,
 } from './styledComponents';
 import CustomButton from '../customComponents/customButton/CustomButton';
-import * as constants from '../../constants/constants';
-import logo from '../../assets/images/q.svg';
 import CustomImage from '../customComponents/customImage/CustomImage';
+import logo from '../../assets/images/q.svg';
+import * as constants from '../../constants/constants';
 
-const Navbar = () => {
-    const user = true;
-
+const Navbar = ({
+    user,
+    signOut,
+}) => {
     return (
         <NavbarWrapper>
                 {user ?
@@ -26,7 +27,7 @@ const Navbar = () => {
                             <StyledLink to={constants.MAIN_ROUTE}>
                                 <CustomButton
                                     text={'Logout'}
-                                    callback={() => console.log('Click to navbar button')}
+                                    callback={signOut}
                                 />
                             </StyledLink>
                         </ButtonContainer>

@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter } from 'react-router-dom';
-import Navbar from './modules/navbar/Navbar';
-import AppRouter from './modules/appRouter/AppRouter';
+import Navbar from './modules/navbar';
+import AppRouter from './modules/appRouter';
 
 const App = () => {
   return (

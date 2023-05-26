@@ -1,4 +1,4 @@
-import Login from './modules/login/Login';
+import Login from './modules/login';
 import Main from './modules/main/Main';
 import * as constants from './constants/constants';
 
