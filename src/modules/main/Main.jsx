@@ -3,7 +3,7 @@ import {
     QuizWrapper,
 } from './styledComponents';
 import Quiz from './components/quiz/Quiz';
-import Chat from './components/chat/Chat';
+import Chat from './components/chat';
 
 const Main = () => {
     return (

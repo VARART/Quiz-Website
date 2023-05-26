@@ -17,7 +17,7 @@ export function* singIn() {
     }
 
     try {
-        const { uid, docId } = yield call(firebaseAuthMethods.getFirebaseSignInRequest); //here is initialize an isAdmin field
+        const { uid, docId } = yield call(firebaseAuthMethods.getFirebaseSignInRequest);
 
         yield put(actions.setAuthUserStore(uid));
         yield put(actions.setAuthUserDatabaseIdStore(docId));

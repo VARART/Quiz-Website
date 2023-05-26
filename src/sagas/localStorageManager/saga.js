@@ -12,22 +12,6 @@ export default function* rootLocalStorageSaga() {
     ]);
 };
 
-export function* getItemFromLocalStorageToStore({ payload }) {
-    if (!payload) {
-        return false;
-    }
-
-    const itemFromLocalStorage = yield call([localStorage, 'getItem'], payload);
-
-    if (!itemFromLocalStorage) {
-        return;
-    }
-
-    const parsedItemFromLocalStorage = yield call([JSON, 'parse'], itemFromLocalStorage);
-
-    yield putResolve(actions.setCorrectAnswerDocIdStore(parsedItemFromLocalStorage));
-}
-
 export function* getUserDataFromLocalStorage() {
     const { uid, docId } = yield select(selectors.getUserState);
 
@@ -46,27 +30,6 @@ export function* getUserDataFromLocalStorage() {
     yield putResolve(actions.setUserDataFromLocalstorageStore({
         userId: parsedUserLocalStorageData.uid,
         userDocId: parsedUserLocalStorageData.docId,
-    }));
-}
-
-export function* getQuizDataFromLocalStorage() {
-    const { uid, docId } = yield select(selectors.getUserState);
-
-    if (uid || docId) {
-        return false;
-    }
-
-    const quizLocalStorageData = yield call([localStorage, 'getItem'], 'quizData');
-
-    if (!quizLocalStorageData) {
-        return;
-    }
-
-    const parsedQuizLocalStorageData = yield call([JSON, 'parse'], quizLocalStorageData);
-
-    yield putResolve(actions.setQuizDataFromLocalstorageStore({
-        currentUserReadiness: [parsedQuizLocalStorageData.currentUserReadiness],
-        isUserReadyToStartQuiz: parsedQuizLocalStorageData.isUserReadyToStartQuiz,
     }));
 }
 

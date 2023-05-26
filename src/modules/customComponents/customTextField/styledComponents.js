@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const TextfieldContainer = styled.div`
+export const TextFieldContainer = styled.div`
     height: 15%;
     display: flex;
     justify-content: space-between;

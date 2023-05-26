@@ -1,5 +1,5 @@
 import { all, call } from 'redux-saga/effects';
-import chatSaga from './firebaseSaga/chatSaga';
+import chatSaga from './chatSaga/chatSaga';
 import quizManagerUserSaga from './quizSaga/quizManagerUserSaga';
 import firebaseAuthSagaWatcher from './firebaseSaga/firebaseAuthSaga';
 import localStorageManagerSaga from './localStorageManager/saga';

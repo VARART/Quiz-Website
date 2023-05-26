@@ -1,5 +1,5 @@
 import Login from './modules/login';
-import Main from './modules/main/Main';
+import Main from './modules/main';
 import * as constants from './constants/constants';
 
 export const publicRoutes = [

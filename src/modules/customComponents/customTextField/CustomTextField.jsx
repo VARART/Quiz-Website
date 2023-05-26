@@ -3,17 +3,19 @@ import {
     TextField,
     TextFieldButton,
     TextFieldWrapper,
-    TextfieldContainer,
+    TextFieldContainer,
 } from './styledComponents';
 
-const CustomTextField = () => {
+const CustomTextField = ({
+    sendMessage,
+}) => {
     const [value, setValue] = useState('');
 
     const textRef = useRef();
 
     const onClickHandler = () => {
         if (value) {
-            console.log(value);
+            sendMessage(value);
 
             setValue('');
         }
@@ -31,28 +33,29 @@ const CustomTextField = () => {
             event.stopPropagation();
 
             if (value) {
-                console.log(value);
+                sendMessage(value);
                 setValue('');
             }
         }
     };
 
     return (
-        <TextfieldContainer>
+        <TextFieldContainer>
             <TextFieldWrapper>
                 <TextField
                     ref={textRef}
                     value={value}
-                    placeholder={'Send a message...'}
                     onChange={onChangeHandler}
                     onKeyDown={handleOnFocus}
+                    placeholder={'Send a message...'}
                 />
             </TextFieldWrapper>
-            <TextFieldButton onClick={onClickHandler}>
-                SEND
-            </TextFieldButton>
-        </TextfieldContainer>
-     );
+            <TextFieldButton
+                onClick={onClickHandler}
+                children={'SEND'}
+            />
+        </TextFieldContainer>
+    );
 };
 
 export default CustomTextField;
