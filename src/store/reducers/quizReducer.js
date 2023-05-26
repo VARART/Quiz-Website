@@ -1,12 +1,24 @@
 import actionTypes from '../../constants/actionTypes';
 
 const initialState = {
+    questionsList: [],
+    currentQuestion: [],
     currentUserReadiness: [],
     isUserReadyToStartQuiz: false,
 };
 
 export default function quizReducer(state = initialState, { type, payload }) {
     switch (type) {
+        case actionTypes.SET_QUESTIONS_LIST_STORE:
+            return {
+                ...state,
+                questionsList: [ ...payload ],
+            };
+        case actionTypes.SET_CURRENT_QUESTION_STORE:
+            return {
+                ...state,
+                currentQuestion: [ payload ],
+            };
         case actionTypes.SET_CURRENT_USER_READINESS_STORE:
             return {
                 ...state,

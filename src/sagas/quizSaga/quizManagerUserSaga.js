@@ -1,5 +1,7 @@
-import { all, call, put, select, takeEvery } from 'redux-saga/effects';
+import { all, call, delay, put, select, putResolve, takeEvery } from 'redux-saga/effects';
 import actionTypes from '../../constants/actionTypes';
+import { sendGetRequest } from '../../API/sendGetRequest';
+import { questionsUrl } from '../../API/constants';
 import * as actions from './actions';
 import * as selectors from './selectors';
 import * as firebaseMethods from '../../firebase/quizMethods';
@@ -7,6 +9,7 @@ import firebaseCollectionTypes from '../../firebase/constants';
 
 export default function* watchQuizUserSaga() {
     yield all([
+        takeEvery(actionTypes.SET_QUESTIONS, startQuiz),
         takeEvery(actionTypes.SET_IS_READY_FOR_GAME, setIsReadyForGameRequest),
     ]);
 };
@@ -44,8 +47,41 @@ export function* setIsReadyForGameRequest() {
                 currentUserReadiness: response,
             } }));
 
+        const isUsersReadyToStartQuiz = yield call(firebaseMethods.checkIsUsersReadyToStartQuiz);
+
+        isUsersReadyToStartQuiz && (yield call(initializeBeforeStartQuiz));
+
         return;
     }
 
     yield call(clearAllCurrentUserReadinessData);
+}
+
+
+export function* initializeBeforeStartQuiz() {
+    try {
+        const data = yield call(sendGetRequest, questionsUrl)
+        const { results: questions } = data;
+        const questionsDocId = yield call(firebaseMethods.sendAddQuestionsRequest, questions);
+
+        yield put(actions.setQuestionsDocIdStore(questionsDocId));
+    } catch (error) {
+        console.error('error', error);
+    }
+}
+
+export function* startQuiz({ payload: questionsList }) {
+    if (!questionsList) {
+        return;
+    }
+
+    yield putResolve(actions.setQuestionsListStore(questionsList));
+
+    const questions = yield select(selectors.getQuestionsList);
+
+    for(let question of questions) {
+        yield put(actions.setCurrentQuestionStore(question));
+
+        yield delay(10000);
+    }
 }

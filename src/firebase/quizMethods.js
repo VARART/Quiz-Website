@@ -1,6 +1,20 @@
 import * as fb from './init';
 import firebaseCollectionTypes from './constants';
 
+export const sendAddQuestionsRequest = async questions => {
+    let questionsDocId = '';
+
+    const fireBaseRef = fb.firestore.collection(firebaseCollectionTypes.QUESTIONS);
+    const query = await fireBaseRef
+        .get();
+    if (query.docs.length === 0) {
+        await fireBaseRef.add({ questions: questions })
+            .then(docRef => questionsDocId = docRef.id);
+    }
+
+    return questionsDocId;
+};
+
 export const sendAddUserReadinessRequest = async () => {
     const user = fb.auth.currentUser;
 
@@ -26,4 +40,18 @@ export const deleteFromCollectionByDocIdRequest = async ({ type, docId }) => {
     const fireBaseUserRef = fb.firestore.collection(type);
 
     await fireBaseUserRef.doc(docId).delete();
+};
+
+export const checkIsUsersReadyToStartQuiz = async () => {
+    const firebaseUsersRef = fb.firestore.collection(firebaseCollectionTypes.USERS);
+    const firebaseUsersReadinessRef = fb.firestore.collection(firebaseCollectionTypes.USERS_READINESS);
+
+    try {
+        const userQuery = await firebaseUsersRef.get();
+        const userReadinessQuery = await firebaseUsersReadinessRef.get();
+
+        return (userQuery.docs.length && userQuery.docs.length === userReadinessQuery.docs.length);
+    } catch (error) {
+        console.error('error', error);
+    }
 };
